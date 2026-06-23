@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Days Counter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-glow bg-glow--one"></div>
+    <div class="bg-glow bg-glow--two"></div>
+
+    <main class="container">
+      <header class="header">
+        <p class="eyebrow">Days Counter</p>
+        <h1 class="title">Track every moment</h1>
+      </header>
+
+      <section class="counter-card">
+        <div class="counter-display">
+          <span class="counter-number" id="dayCount" aria-live="polite">0</span>
+          <p class="counter-label" id="dayLabel">days</p>
+        </div>
+
+        <p class="counter-subtitle" id="counterSubtitle">
+          Pick a date to begin
+        </p>
+      </section>
+
+      <section class="input-card">
+        <label class="input-label" for="dateInput">Start date</label>
+        <input
+          type="date"
+          id="dateInput"
+          class="date-input"
+          aria-describedby="dateHint"
+        />
+        <p class="input-hint" id="dateHint">
+          Your date is saved automatically
+        </p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
