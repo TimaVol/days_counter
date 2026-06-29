@@ -2,6 +2,7 @@ const COOKIE_NAME = "days_counter_date";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
 
 const dateInput = document.getElementById("dateInput");
+const todayBtn = document.getElementById("todayBtn");
 const dayCountEl = document.getElementById("dayCount");
 const dayLabelEl = document.getElementById("dayLabel");
 const counterSubtitleEl = document.getElementById("counterSubtitle");
@@ -87,12 +88,29 @@ function updateDisplay(dateStr) {
   dayCountEl.classList.add("pop");
 }
 
+function getTodayString() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return year + "-" + month + "-" + day;
+}
+
+function setDate(dateStr) {
+  dateInput.value = dateStr;
+  setCookie(COOKIE_NAME, dateStr);
+  updateDisplay(dateStr);
+}
+
 function onDateChange() {
   const value = dateInput.value;
   if (!value) return;
 
-  setCookie(COOKIE_NAME, value);
-  updateDisplay(value);
+  setDate(value);
+}
+
+function onTodayClick() {
+  setDate(getTodayString());
 }
 
 const savedDate = getCookie(COOKIE_NAME);
@@ -105,3 +123,4 @@ if (savedDate) {
 
 dateInput.addEventListener("change", onDateChange);
 dateInput.addEventListener("input", onDateChange);
+todayBtn.addEventListener("click", onTodayClick);

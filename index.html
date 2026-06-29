@@ -35,12 +35,15 @@
 
       <section class="input-card">
         <label class="input-label" for="dateInput">Start date</label>
-        <input
-          type="date"
-          id="dateInput"
-          class="date-input"
-          aria-describedby="dateHint"
-        />
+        <div class="date-input-row">
+          <input
+            type="date"
+            id="dateInput"
+            class="date-input"
+            aria-describedby="dateHint"
+          />
+          <button type="button" class="today-btn" id="todayBtn">Today</button>
+        </div>
         <p class="input-hint" id="dateHint">
           Your date is saved automatically
         </p>

@@ -180,7 +180,14 @@ body {
   letter-spacing: 0.02em;
 }
 
+.date-input-row {
+  display: flex;
+  gap: 0.625rem;
+  min-width: 0;
+}
+
 .date-input {
+  flex: 1;
   display: block;
   width: 100%;
   max-width: 100%;
@@ -213,6 +220,31 @@ body {
 .date-input::-webkit-calendar-picker-indicator {
   filter: invert(0.8);
   cursor: pointer;
+}
+
+.today-btn {
+  flex-shrink: 0;
+  padding: 0.875rem 1.125rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--accent-soft);
+  border: 1px solid rgba(124, 156, 255, 0.35);
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.today-btn:hover {
+  background: rgba(124, 156, 255, 0.28);
+  border-color: rgba(124, 156, 255, 0.5);
+}
+
+.today-btn:active {
+  transform: scale(0.98);
 }
 
 .input-hint {
