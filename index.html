@@ -9,74 +9,88 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Critical CSS (inline) - very important for instant render -->
+  <!-- Critical CSS + Excellent Font Fallbacks -->
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#0c0f14;
-      --text:#f4f6fb;
-      --text-muted:rgba(244,246,251,0.55);
-      --accent:#7c9cff;
-      --glow:rgba(124,156,255,0.35);
-      --font-sans:"DM Sans",system-ui,sans-serif;
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    html,body{
-      min-height:100%;
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:var(--font-sans);
+    :root {
+      --bg: #0c0f14;
+      --surface: rgba(255, 255, 255, 0.04);
+      --surface-border: rgba(255, 255, 255, 0.08);
+      --text: #f4f6fb;
+      --text-muted: rgba(244, 246, 251, 0.55);
+      --accent: #7c9cff;
+      --accent-soft: rgba(124, 156, 255, 0.18);
+      --glow: rgba(124, 156, 255, 0.35);
+      --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
     }
-    body{overflow-x:hidden}
-    .container{
-      position:relative;
-      z-index:1;
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      gap:2.5rem;
-      padding:2rem 1rem 3rem;
-      max-width:520px;
-      margin:0 auto;
+    html, body {
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
     }
-    .counter-number{
-      font-family:"Instrument Serif",Georgia,serif;
-      font-size:clamp(5rem,22vw,8rem);
-      line-height:1;
-      letter-spacing:-0.02em;
-      background:linear-gradient(180deg,#fff,rgba(255,255,255,0.75));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
+    .bg-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
     }
-    .bg-glow{
-      position:fixed;
-      border-radius:50%;
-      filter:blur(100px);
-      pointer-events:none;
-      z-index:0;
+    .bg-glow--one {
+      width: 480px;
+      height: 480px;
+      top: -120px;
+      right: -80px;
+      background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
     }
-    .bg-glow--one{
-      width:480px;height:480px;top:-120px;right:-80px;
-      background:radial-gradient(circle,var(--glow) 0%,transparent 70%);
+    .bg-glow--two {
+      width: 400px;
+      height: 400px;
+      bottom: -100px;
+      left: -60px;
+      background: radial-gradient(circle, rgba(180, 130, 255, 0.22) 0%, transparent 70%);
     }
-    .bg-glow--two{
-      width:400px;height:400px;bottom:-100px;left:-60px;
-      background:radial-gradient(circle,rgba(180,130,255,0.22) 0%,transparent 70%);
+    .container {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 2rem 1rem 3rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .counter-number {
+      font-family: var(--font-serif);
+      font-size: clamp(5rem, 22vw, 8rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.75) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
   </style>
 
-  <!-- Full stylesheet (non-blocking) -->
+  <!-- Full Stylesheet (non-blocking) -->
   <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
-  <!-- Google Fonts (non-blocking) -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" 
-        rel="stylesheet" 
-        media="print" 
-        onload="this.media='all'">
+  <!-- Google Fonts (non-blocking + swap) -->
+  <link 
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" 
+    rel="stylesheet" 
+    media="print" 
+    onload="this.media='all'">
   <noscript>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   </noscript>
@@ -86,7 +100,6 @@
   <div class="bg-glow bg-glow--two"></div>
 
   <main class="container">
-    <!-- Your existing HTML content remains exactly the same -->
     <header class="header">
       <p class="eyebrow">Days Counter</p>
       <h1 class="title">Track every moment</h1>
@@ -103,7 +116,7 @@
     <section class="input-card">
       <label class="input-label" for="dateInput">Start date</label>
       <div class="date-input-row">
-        <input type="date" id="dateInput" class="date-input" aria-describedby="dateHint"/>
+        <input type="date" id="dateInput" class="date-input" aria-describedby="dateHint" />
         <button type="button" class="today-btn" id="todayBtn">Today</button>
       </div>
       <p class="input-hint" id="dateHint">Your date is saved automatically</p>
