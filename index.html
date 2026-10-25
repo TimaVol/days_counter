@@ -88,24 +88,13 @@
       <h1 class="title">Track every moment</h1>
     </header>
 
-    <section class="counter-card">
-      <div class="counter-display">
-        <span class="counter-number" id="dayCount" aria-live="polite">0</span>
-        <p class="counter-label" id="dayLabel">days</p>
-      </div>
-      <p class="counter-subtitle" id="counterSubtitle">Pick a date to begin</p>
-    </section>
+    <div id="countersList" class="counters-list"></div>
 
-    <section class="input-card">
-      <label class="input-label" for="dateInput">Start date</label>
-      <div class="date-input-row">
-        <input type="date" id="dateInput" class="date-input" aria-describedby="dateHint" />
-        <button type="button" class="today-btn" id="todayBtn">Today</button>
-      </div>
-      <p class="input-hint" id="dateHint">Your date is saved automatically</p>
-    </section>
+    <button type="button" class="add-btn" id="addCounterBtn">
+      Add another counter
+    </button>
   </main>
 
-  <script src="script.js" defer></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
